@@ -1,0 +1,383 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="林泠翎">
+  
+  
+  
+  
+    <meta name="description" content="cryptoxor检查题目,可知是将flag分成两部分异或,只需再分别进行一次异或即可还原flag
+得flag&#x3D;b’flag{0ops!_you_know_XOR!}’
+12345678910111213from Crypto.Util.number import *c1= 8091799978721254458294926060841c2= b&#x27;;:\x1c1&lt;\...">
+  
+  <title>newstarWeek1 [ 林泠翎のblog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="林泠翎のblog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/sign.ico">
+  
+  
+  
+<link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/2024/09/29/HelloWorld/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        HelloWorld
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="/astesia.jpg"/>
+          <div id="homelink">林泠翎のblog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a target="_blank" rel="noopener" href="https://github.com/Reunited24601">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>newstarWeek1</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2024-10-03</span>
+      
+        <span id = "post-title-updated">Updated at 2024-10-03</span>
+      
+      
+      
+        <span id = "post-title-tags">
+          Tag
+          
+          
+            
+            
+            <a href="/tags/ctf-wp/">ctf wp</a>
+          
+        </span>
+      
+      <span id="/2024/10/03/newstarWeek1/" class="leancloud-visitors" data-flag-title="newstarWeek1">
+        <i class="leancloud-visitors-count"></i>
+        <em class="post-meta-item-text"> views </em>
+      </span>
+    </p>
+    
+    <h1 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h1><h2 id="xor"><a href="#xor" class="headerlink" title="xor"></a>xor</h2><p>检查题目,可知是将flag分成两部分异或,只需再分别进行一次异或即可还原flag</p>
+<p>得flag&#x3D;b’flag{0ops!_you_know_XOR!}’</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">c1= <span class="number">8091799978721254458294926060841</span></span><br><span class="line">c2= <span class="string">b&#x27;;:\x1c1&lt;\x03&gt;*\x10\x11u;&#x27;</span></span><br><span class="line">key = <span class="string">b&#x27;New_Star_CTF&#x27;</span></span><br><span class="line"></span><br><span class="line">m1 = c1 ^ bytes_to_long(key)</span><br><span class="line">m2 = bytes_to_long(c2) ^ bytes_to_long(key)</span><br><span class="line">m1 = long_to_bytes(m1)</span><br><span class="line">m2 = long_to_bytes(m2)</span><br><span class="line">flag=m1+m2</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="base"><a href="#base" class="headerlink" title="base"></a>base</h2><p>有题目’base’与提示’This is a base question!’</p>
+<p>推测为base家族</p>
+<p>观察</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4C4A575851324332474E324547554B494A5A4446513653434E564D444154545A4B354D45454D434E4959345536544B474D5134513D3D3D3D</span><br></pre></td></tr></table></figure>
+
+<p>仅有数字与ABCDE,推测为base16</p>
+<p>转换得</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LJWXQ2C2GN2EGUKIJZDFQ6SCNVMDATTZK5MEEMCNIY4U6TKGMQ4Q====</span><br></pre></td></tr></table></figure>
+
+<p>含有等号,仅有数字与大写字母,推测为base32</p>
+<p>转换得</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZmxhZ3tCQHNFXzBmX0NyWXB0MF9OMFd9</span><br></pre></td></tr></table></figure>
+
+<p>含有大小写字母与数字,推测为base64</p>
+<p>转换得b‘flag{B@sE_0f_CrYpt0_N0W}’</p>
+<p>则flag&#x3D;flag{B@sE_0f_CrYpt0_N0W}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">c=<span class="string">b&#x27;4C4A575851324332474E324547554B494A5A4446513653434E564D444154545A4B354D45454D434E4959345536544B474D5134513D3D3D3D&#x27;</span></span><br><span class="line">c=base64.b16decode(c)</span><br><span class="line">c=base64.b32decode(c)</span><br><span class="line">c=base64.b64decode(c)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="一眼秒了"><a href="#一眼秒了" class="headerlink" title="一眼秒了"></a>一眼秒了</h2><p>检查题目可知为rsa,已知n,e,c</p>
+<p>提示’n小小的也很可爱’,推测是要分解n</p>
+<p>丢入网站分解得</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p=7221289171488727827673517139597844534869368289455419695964957239047692699919030405800116133805855968123601433247022090070114331842771417566928809956044421</span><br><span class="line">q=7221289171488727827673517139597844534869368289455419695964957239047692699919030405800116133805855968123601433247022090070114331842771417566928809956045093</span><br></pre></td></tr></table></figure>
+
+<p>已知p,q,c,e可直接解出m</p>
+<p>转换得flag&#x3D;b’flag{9cd4b35a-affc-422a-9862-58e1cc3ff8d2}’</p>
+<details> 
+<summary></summary>  
+n其实完全不小...
+明明是p,q太近了
+</details>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p=<span class="number">7221289171488727827673517139597844534869368289455419695964957239047692699919030405800116133805855968123601433247022090070114331842771417566928809956044421</span></span><br><span class="line">q=<span class="number">7221289171488727827673517139597844534869368289455419695964957239047692699919030405800116133805855968123601433247022090070114331842771417566928809956045093</span></span><br><span class="line">c=<span class="number">48757373363225981717076130816529380470563968650367175499612268073517990636849798038662283440350470812898424299904371831068541394247432423751879457624606194334196130444478878533092854342610288522236409554286954091860638388043037601371807379269588474814290382239910358697485110591812060488786552463208464541069</span></span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line"></span><br><span class="line">d=inverse(e,(p-<span class="number">1</span>)*(q-<span class="number">1</span>))</span><br><span class="line">m=<span class="built_in">pow</span>(c,d,p*q)</span><br><span class="line">flag=long_to_bytes(m)</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Strange-King"><a href="#Strange-King" class="headerlink" title="Strange King"></a>Strange King</h2><p>已知flag格式均为flag{}</p>
+<p>观察ksjr{EcxvpdErSvcDgdgEzxqjql},及提示中’皇帝’’取模’,推测为移位</p>
+<p>flag对应ksjr,移位位数分别为5,7,9,11</p>
+<p>猜想移位位数为(2*n+5) mod 26</p>
+<p>还原后得flag&#x3D;flag{PleaseDoNotStopLearing}</p>
+<details> 
+<summary></summary>  
+它这是不是少了个n...
+</details>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">hhh=[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;f&#x27;</span>,<span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;h&#x27;</span>,<span class="string">&#x27;i&#x27;</span>,<span class="string">&#x27;j&#x27;</span>,<span class="string">&#x27;k&#x27;</span>,<span class="string">&#x27;l&#x27;</span>,<span class="string">&#x27;m&#x27;</span>,<span class="string">&#x27;n&#x27;</span>,<span class="string">&#x27;o&#x27;</span>,<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;q&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;s&#x27;</span>,<span class="string">&#x27;t&#x27;</span>,<span class="string">&#x27;u&#x27;</span>,<span class="string">&#x27;v&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;z&#x27;</span>]</span><br><span class="line">HHH=[<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;E&#x27;</span>,<span class="string">&#x27;F&#x27;</span>,<span class="string">&#x27;G&#x27;</span>,<span class="string">&#x27;H&#x27;</span>,<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;J&#x27;</span>,<span class="string">&#x27;K&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;N&#x27;</span>,<span class="string">&#x27;O&#x27;</span>,<span class="string">&#x27;P&#x27;</span>,<span class="string">&#x27;Q&#x27;</span>,<span class="string">&#x27;R&#x27;</span>,<span class="string">&#x27;S&#x27;</span>,<span class="string">&#x27;T&#x27;</span>,<span class="string">&#x27;U&#x27;</span>,<span class="string">&#x27;V&#x27;</span>,<span class="string">&#x27;W&#x27;</span>,<span class="string">&#x27;X&#x27;</span>,<span class="string">&#x27;Y&#x27;</span>,<span class="string">&#x27;Z&#x27;</span>]</span><br><span class="line">sttr=<span class="string">&#x27;ksjr&#123;EcxvpdErSvcDgdgEzxqjql&#125;&#x27;</span></span><br><span class="line">s=<span class="number">3</span></span><br><span class="line">out=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sttr:</span><br><span class="line">    s=<span class="built_in">pow</span>(s+<span class="number">2</span>,<span class="number">1</span>,<span class="number">26</span>)</span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">in</span> hhh:</span><br><span class="line">        j=hhh.index(i)</span><br><span class="line">        j=hhh[(j-s)%<span class="number">26</span>]</span><br><span class="line">        out+=j</span><br><span class="line">    <span class="keyword">elif</span> i <span class="keyword">in</span> HHH:</span><br><span class="line">        j=HHH.index(i)</span><br><span class="line">        j=HHH[(j-s)%<span class="number">26</span>]</span><br><span class="line">        out+=j</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        out+=i</span><br><span class="line"><span class="built_in">print</span>(out)</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#xor"><span class="toc-text">xor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base"><span class="toc-text">base</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%9C%BC%E7%A7%92%E4%BA%86"><span class="toc-text">一眼秒了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strange-King"><span class="toc-text">Strange King</span></a></li></ol></li></ol>
+  </div>
+</div>
+
+  
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2024/09/29/HelloWorld/" class="next">Next post HelloWorld &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+  
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by 林泠翎 using
+      <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      -Thanks for the help
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="/astesia.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-3.6.4.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+    
+      backgroundImages.push('/back1.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back2.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back3.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back4.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back5.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back6.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back7.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back8.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back9.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back10.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back11.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back12.png?imageView2/1/w/__width__/h/__height__');
+    
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["zoomIn"],"timer":false,"delay":400000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
