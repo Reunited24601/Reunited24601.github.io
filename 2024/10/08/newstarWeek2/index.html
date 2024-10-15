@@ -1,0 +1,389 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="林泠翎">
+  
+  
+  
+  
+    <meta name="description" content="cryptojust one and more and two观察题目可知是将flag截成两段分别进行rsa,且几个素数,密文,e均已知
+直接求逆再求明文拼接即可
+得flag&#x3D;flag{Y0u_re4lly_kn0w_Euler_4nd_N3xt_Eu1er_is_Y0u!}
+123456789101112131415from Crypto.Util.number import *...">
+  
+  <title>newstarWeek2 [ 林泠翎のblog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="林泠翎のblog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/sign.ico">
+  
+  
+  
+<link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2024/10/08/0xGameWeek1/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        0xGameWeek1
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2024/10/03/newstarWeek1/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        newstarWeek1
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="/astesia.jpg"/>
+          <div id="homelink">林泠翎のblog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a target="_blank" rel="noopener" href="https://github.com/Reunited24601">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>newstarWeek2</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2024-10-08</span>
+      
+        <span id = "post-title-updated">Updated at 2024-10-08</span>
+      
+      
+      
+        <span id = "post-title-tags">
+          Tag
+          
+          
+            
+            
+            <a href="/tags/ctf-wp/">ctf wp</a>
+          
+        </span>
+      
+      <span id="/2024/10/08/newstarWeek2/" class="leancloud-visitors" data-flag-title="newstarWeek2">
+        <i class="leancloud-visitors-count"></i>
+        <em class="post-meta-item-text"> views </em>
+      </span>
+    </p>
+    
+    <h1 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h1><h2 id="just-one-and-more-and-two"><a href="#just-one-and-more-and-two" class="headerlink" title="just one and more and two"></a>just one and more and two</h2><p>观察题目可知是将flag截成两段分别进行rsa,且几个素数,密文,e均已知</p>
+<p>直接求逆再求明文拼接即可</p>
+<p>得flag&#x3D;flag{Y0u_re4lly_kn0w_Euler_4nd_N3xt_Eu1er_is_Y0u!}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line">p=<span class="number">11867061353246233251584761575576071264056514705066766922825303434965272105673287382545586304271607224747442087588050625742380204503331976589883604074235133</span></span><br><span class="line">q=<span class="number">11873178589368883675890917699819207736397010385081364225879431054112944129299850257938753554259645705535337054802699202512825107090843889676443867510412393</span></span><br><span class="line">r=<span class="number">12897499208983423232868869100223973634537663127759671894357936868650239679942565058234189535395732577137079689110541612150759420022709417457551292448732371</span></span><br><span class="line">c1=<span class="number">8705739659634329013157482960027934795454950884941966136315983526808527784650002967954059125075894300750418062742140200130188545338806355927273170470295451</span></span><br><span class="line">c2=<span class="number">1004454248332792626131205259568148422136121342421144637194771487691844257449866491626726822289975189661332527496380578001514976911349965774838476334431923162269315555654716024616432373992288127966016197043606785386738961886826177232627159894038652924267065612922880048963182518107479487219900530746076603182269336917003411508524223257315597473638623530380492690984112891827897831400759409394315311767776323920195436460284244090970865474530727893555217020636612445</span></span><br><span class="line"></span><br><span class="line">d1=inverse(e,p-<span class="number">1</span>)</span><br><span class="line">d2=inverse(e,(p-<span class="number">1</span>)*(q-<span class="number">1</span>)*(r-<span class="number">1</span>))</span><br><span class="line">m1=<span class="built_in">pow</span>(c1,d1,p)</span><br><span class="line">m2=<span class="built_in">pow</span>(c2,d2,p*q*r)</span><br><span class="line">flag=<span class="built_in">str</span>(long_to_bytes(m1))[<span class="number">2</span>:-<span class="number">1</span>]+<span class="built_in">str</span>(long_to_bytes(m2))[<span class="number">2</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="疑惑-异或"><a href="#疑惑-异或" class="headerlink" title="疑惑(异或)"></a>疑惑(异或)</h2><p>观察题目,可得已知e,n,c以及hint&#x3D;p xor (e+10086)</p>
+<p>则再将hint与(e+10086)异或即可得出p,进而可得q</p>
+<p>已知p,q,对e求逆后解密密文即可得出flag&#x3D;flag{yihuo_yuan_lai_xian_ji_suan_liang_bian_de2333}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">c = <span class="number">36513006092776816463005807690891878445084897511693065366878424579653926750135820835708001956534802873403195178517427725389634058598049226914694122804888321427912070308432512908833529417531492965615348806470164107231108504308584954154513331333004804817854315094324454847081460199485733298227480134551273155762</span></span><br><span class="line">n = <span class="number">124455847177872829086850368685666872009698526875425204001499218854100257535484730033567552600005229013042351828575037023159889870271253559515001300645102569745482135768148755333759957370341658601268473878114399708702841974488367343570414404038862892863275173656133199924484523427712604601606674219929087411261</span></span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line">hint = <span class="number">12578819356802034679792891975754306960297043516674290901441811200649679289740456805726985390445432800908006773857670255951581884098015799603908242531673390</span></span><br><span class="line"></span><br><span class="line">p = hint^e+<span class="number">10086</span></span><br><span class="line">q=n//p</span><br><span class="line">d=inverse(e,(p-<span class="number">1</span>)*(q-<span class="number">1</span>))</span><br><span class="line">m=<span class="built_in">pow</span>(c,d,n)</span><br><span class="line">flag=<span class="built_in">str</span>(long_to_bytes(m))[<span class="number">2</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Since-you-know-something"><a href="#Since-you-know-something" class="headerlink" title="Since you know something"></a>Since you know something</h2><p>已知pwn库中的xor不改变bit数</p>
+<p>则将c转化为二进制后其长度与flag所占bit数相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="number">100000011111000011110001010000010101001010100101111000000110001100010001100000000000010000110001100100101100000110100001101101011101001011000011011001000011000111000010110000001100010000000001101000000111010111010000000100010011</span></span><br></pre></td></tr></table></figure>
+
+<p>其位数为228,不为8的倍数(232),则其开头应省略了四位0,即</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="number">0000</span>100000011111000011110001010000010101001010100101111000000110001100010001100000000000010000110001100100101100000110100001101101011101001011000011011001000011000111000010110000001100010000000001101000000111010111010000000100010011</span><br></pre></td></tr></table></figure>
+
+<p>已知flag开头均为’flag{‘,其二进制编码为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag_head=<span class="number">110011001101100011000010110011101111011</span></span><br></pre></td></tr></table></figure>
+
+<p>位数为39,同上,补完后为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag_head=0110011001101100011000010110011101111011</span><br></pre></td></tr></table></figure>
+
+<p>从c中截取前40位与flag_head异或</p>
+<p>得到填充后的key(或其部分)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key=<span class="number">110111001110011011011100111001101101110</span></span><br></pre></td></tr></table></figure>
+
+<p>位数为39,同上,补完后为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key=0110111001110011011011100111001101101110</span><br></pre></td></tr></table></figure>
+
+<p>提示中说key极小,观察上述数字,可得0110111001110011出现了循环,可猜测其为key</p>
+<p>将key填充至与c等长后异或</p>
+<p>得flag&#x3D;flag{Y0u_kn0w_th3_X0r_b3tt3r}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">flag_head=bytes_to_long(<span class="string">b&#x27;flag&#123;&#x27;</span>)</span><br><span class="line">flag_head=<span class="built_in">str</span>(<span class="built_in">bin</span>(flag_head))[<span class="number">2</span>:]</span><br><span class="line">c=<span class="number">218950457292639210021937048771508243745941011391746420225459726647571</span></span><br><span class="line">c=<span class="built_in">str</span>(<span class="built_in">bin</span>(c))[<span class="number">2</span>:]</span><br><span class="line">c=<span class="string">&#x27;0000&#x27;</span>+c</span><br><span class="line">flag_head=<span class="string">&#x27;0&#x27;</span>+flag_head</span><br><span class="line">c_head=c[<span class="number">0</span>:<span class="number">40</span>]</span><br><span class="line">key=<span class="built_in">int</span>(flag_head,<span class="number">2</span>)^<span class="built_in">int</span>(c_head,<span class="number">2</span>)</span><br><span class="line">key=<span class="built_in">str</span>(<span class="built_in">bin</span>(key))[<span class="number">2</span>:]</span><br><span class="line">key=<span class="string">&#x27;0&#x27;</span>+key[<span class="number">0</span>:<span class="number">15</span>]</span><br><span class="line">key=<span class="number">200</span>*key ; key=key[<span class="number">0</span>:<span class="built_in">len</span>(c)]</span><br><span class="line">c,key=<span class="built_in">int</span>(c,<span class="number">2</span>),<span class="built_in">int</span>(key,<span class="number">2</span>)</span><br><span class="line">flag=long_to_bytes(c^key)</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="茶里茶气"><a href="#茶里茶气" class="headerlink" title="茶里茶气"></a>茶里茶气</h2><p>观察题目得flag字符数为25,则其对于bit数应为200(ascii)</p>
+<p>l&#x3D;199,则flag对应编码开头省去一个0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v0 = <span class="built_in">int</span>(a,<span class="number">16</span>)&gt;&gt;(l//<span class="number">2</span>)</span><br><span class="line">v1 = <span class="built_in">int</span>(a,<span class="number">16</span>)-(v0&lt;&lt;(l//<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>初始的v0,v1应为分别flag的前100位,后99位</p>
+<p>后需代码为对v0,v1的加密,由于参数均已知且最终加密结果已知</p>
+<p>可直接求出原来的v0,v1,将其拼接转化</p>
+<p>即可得flag&#x3D;flag{f14gg9_te2_1i_7ea_7}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">l  = <span class="number">199</span></span><br><span class="line">p  = <span class="number">446302455051275584229157195942211</span></span><br><span class="line">v0 = <span class="number">190997821330413928409069858571234</span></span><br><span class="line">v1 = <span class="number">137340509740671759939138452113480</span></span><br><span class="line">v2 = <span class="number">0</span></span><br><span class="line">derta = <span class="number">462861781278454071588539315363</span></span><br><span class="line">v3 = <span class="number">489552116384728571199414424951</span></span><br><span class="line">v4 = <span class="number">469728069391226765421086670817</span></span><br><span class="line">v5 = <span class="number">564098252372959621721124077407</span></span><br><span class="line">v6 = <span class="number">335640247620454039831329381071</span></span><br><span class="line"></span><br><span class="line">list_v2=[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">31</span>):</span><br><span class="line">    v2 += derta ; v2 %= p</span><br><span class="line">    list_v2.append(v2)</span><br><span class="line">list_v2=list_v2[::-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">    v0 -= (v1+list_v2[i]) ^ ( <span class="number">8</span>*v1 + v5 ) ^ ( (v1&gt;&gt;<span class="number">7</span>) + v6 ) ; v0 %= p</span><br><span class="line">    v1 -= (v0+list_v2[i]) ^ ( <span class="number">8</span>*v0 + v3 ) ^ ( (v0&gt;&gt;<span class="number">7</span>) + v4 ) ; v1 %= p</span><br><span class="line"></span><br><span class="line">v0=v0&lt;&lt;(l//<span class="number">2</span>)</span><br><span class="line">m=v0+v1</span><br><span class="line">flag=long_to_bytes(m)</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#just-one-and-more-and-two"><span class="toc-text">just one and more and two</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E6%83%91-%E5%BC%82%E6%88%96"><span class="toc-text">疑惑(异或)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Since-you-know-something"><span class="toc-text">Since you know something</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%B6%E9%87%8C%E8%8C%B6%E6%B0%94"><span class="toc-text">茶里茶气</span></a></li></ol></li></ol>
+  </div>
+</div>
+
+  
+  
+<nav id="pagination">
+  
+    <a href="/2024/10/08/0xGameWeek1/" class="prev">&larr; Prev post 0xGameWeek1</a>
+  
+
+  
+
+  
+    <a href="/2024/10/03/newstarWeek1/" class="next">Next post newstarWeek1 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+  
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by 林泠翎 using
+      <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      -Thanks for the help
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="/astesia.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-3.6.4.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+    
+      backgroundImages.push('/back1.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back2.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back3.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back4.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back5.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back6.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back7.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back8.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back9.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back10.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back11.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back12.png?imageView2/1/w/__width__/h/__height__');
+    
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["zoomIn"],"timer":false,"delay":400000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
