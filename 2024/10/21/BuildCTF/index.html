@@ -1,0 +1,348 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="林泠翎">
+  
+  
+  
+  
+    <meta name="description" content="OVO开门爽！开到南天门了兄弟已知p^2,q^2,c,e,n
+我这辈子就是被古典给害了1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162from Crypto.Util.Padding import pad, un...">
+  
+  <title>BuildCTF [ 林泠翎のblog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="林泠翎のblog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/sign.ico">
+  
+  
+  
+<link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/2024/10/08/0xGame/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        0xGame
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="/astesia.jpg"/>
+          <div id="homelink">林泠翎のblog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a target="_blank" rel="noopener" href="https://github.com/Reunited24601">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>BuildCTF</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2024-10-21</span>
+      
+        <span id = "post-title-updated">Updated at 2024-10-22</span>
+      
+      
+      
+        <span id = "post-title-tags">
+          Tag
+          
+          
+            
+            
+            <a href="/tags/ctf-wp/">ctf wp</a>
+          
+        </span>
+      
+      <span id="/2024/10/21/BuildCTF/" class="leancloud-visitors" data-flag-title="BuildCTF">
+        <i class="leancloud-visitors-count"></i>
+        <em class="post-meta-item-text"> views </em>
+      </span>
+    </p>
+    
+    <h3 id="OVO开门爽！开到南天门了兄弟"><a href="#OVO开门爽！开到南天门了兄弟" class="headerlink" title="OVO开门爽！开到南天门了兄弟"></a>OVO开门爽！开到南天门了兄弟</h3><p>已知p^2,q^2,c,e,n</p>
+<h3 id="我这辈子就是被古典给害了"><a href="#我这辈子就是被古典给害了" class="headerlink" title="我这辈子就是被古典给害了"></a>我这辈子就是被古典给害了</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"><span class="keyword">from</span> Crypto.Random <span class="keyword">import</span> get_random_bytes</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag, key</span><br><span class="line"></span><br><span class="line">dict1 = &#123;<span class="string">&#x27;A&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;B&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;C&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;D&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;E&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">         <span class="string">&#x27;F&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;G&#x27;</span>: <span class="number">6</span>, <span class="string">&#x27;H&#x27;</span>: <span class="number">7</span>, <span class="string">&#x27;I&#x27;</span>: <span class="number">8</span>, <span class="string">&#x27;J&#x27;</span>: <span class="number">9</span>,</span><br><span class="line">         <span class="string">&#x27;K&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;L&#x27;</span>: <span class="number">11</span>, <span class="string">&#x27;M&#x27;</span>: <span class="number">12</span>, <span class="string">&#x27;N&#x27;</span>: <span class="number">13</span>, <span class="string">&#x27;O&#x27;</span>: <span class="number">14</span>,</span><br><span class="line">         <span class="string">&#x27;P&#x27;</span>: <span class="number">15</span>, <span class="string">&#x27;Q&#x27;</span>: <span class="number">16</span>, <span class="string">&#x27;R&#x27;</span>: <span class="number">17</span>, <span class="string">&#x27;S&#x27;</span>: <span class="number">18</span>, <span class="string">&#x27;T&#x27;</span>: <span class="number">19</span>,</span><br><span class="line">         <span class="string">&#x27;U&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;V&#x27;</span>: <span class="number">21</span>, <span class="string">&#x27;W&#x27;</span>: <span class="number">22</span>, <span class="string">&#x27;X&#x27;</span>: <span class="number">23</span>, <span class="string">&#x27;Y&#x27;</span>: <span class="number">24</span>, <span class="string">&#x27;Z&#x27;</span>: <span class="number">25</span>&#125;</span><br><span class="line"></span><br><span class="line">dict2 = &#123;<span class="number">0</span>: <span class="string">&#x27;A&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;B&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;C&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;D&#x27;</span>, <span class="number">4</span>: <span class="string">&#x27;E&#x27;</span>,</span><br><span class="line">         <span class="number">5</span>: <span class="string">&#x27;F&#x27;</span>, <span class="number">6</span>: <span class="string">&#x27;G&#x27;</span>, <span class="number">7</span>: <span class="string">&#x27;H&#x27;</span>, <span class="number">8</span>: <span class="string">&#x27;I&#x27;</span>, <span class="number">9</span>: <span class="string">&#x27;J&#x27;</span>,</span><br><span class="line">         <span class="number">10</span>: <span class="string">&#x27;K&#x27;</span>, <span class="number">11</span>: <span class="string">&#x27;L&#x27;</span>, <span class="number">12</span>: <span class="string">&#x27;M&#x27;</span>, <span class="number">13</span>: <span class="string">&#x27;N&#x27;</span>, <span class="number">14</span>: <span class="string">&#x27;O&#x27;</span>,</span><br><span class="line">         <span class="number">15</span>: <span class="string">&#x27;P&#x27;</span>, <span class="number">16</span>: <span class="string">&#x27;Q&#x27;</span>, <span class="number">17</span>: <span class="string">&#x27;R&#x27;</span>, <span class="number">18</span>: <span class="string">&#x27;S&#x27;</span>, <span class="number">19</span>: <span class="string">&#x27;T&#x27;</span>,</span><br><span class="line">         <span class="number">20</span>: <span class="string">&#x27;U&#x27;</span>, <span class="number">21</span>: <span class="string">&#x27;V&#x27;</span>, <span class="number">22</span>: <span class="string">&#x27;W&#x27;</span>, <span class="number">23</span>: <span class="string">&#x27;X&#x27;</span>, <span class="number">24</span>: <span class="string">&#x27;Y&#x27;</span>, <span class="number">25</span>: <span class="string">&#x27;Z&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_key</span>(<span class="params">flag, key</span>):</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(key) == <span class="built_in">len</span>(flag):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        key += flag[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> key</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cipherText</span>(<span class="params">msg, key_new</span>):</span><br><span class="line">    cipher_text = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> letter <span class="keyword">in</span> msg:</span><br><span class="line">        x = (dict1[letter] + dict1[key_new[i]]) % <span class="number">26</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        cipher_text += dict2[x]</span><br><span class="line">    <span class="keyword">return</span> cipher_text</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AES_enc</span>(<span class="params">key, value</span>):</span><br><span class="line">    key = (key * <span class="number">2</span>).encode()</span><br><span class="line">    cipher = AES.new(key, AES.MODE_ECB)</span><br><span class="line">    value = value.encode()</span><br><span class="line">    padded_text = pad(value, AES.block_size)</span><br><span class="line"></span><br><span class="line">    ciphertext = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;AES Encrypted Text =&quot;</span>, ciphertext)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">substitute</span>(<span class="params">msg</span>):</span><br><span class="line">    msg = msg.replace(<span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">    msg = msg.replace(<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">    msg = msg.replace(<span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">    msg = msg.upper()</span><br><span class="line">    <span class="keyword">assert</span> msg.isupper()</span><br><span class="line">    <span class="keyword">return</span> msg</span><br><span class="line"></span><br><span class="line">message = substitute(flag)</span><br><span class="line">key_new = generate_key(message, key)</span><br><span class="line">cipher = cipherText(message, key_new)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Encrypted Text =&quot;</span>, cipher)</span><br><span class="line">AES_enc(key, flag)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Encrypted Text = HLMPWKGLYSWFACEWBYRSUKYFAXZFXDKOTZHHSLFCXNICAHPGRIFUF</span></span><br><span class="line"><span class="string">AES Encrypted Text = b&#x27;\x92T&#123;\x1f\x0f&quot;\xbd\xbb\xfa|O\x11\x83\xa0\xec.\x15]\x9f\x9a\xe5\x85Z\x9f@yUm\xbb\xdc\x93\x08\xe5\x8b\xd5\x98\x84\xfa\x91\xe8\xde\x1b&#125;\xcd\x9056\xa3\xbf\xdb\x85J\xcc\xec\x812T\x11\xa7Tl\x15\xf6&quot;&#x27;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>Vigenere,用key+明文为密钥,明文开头已知(BuildCTF{)</p>
+<p>密文第九位(原{)加密后为Y,正好与B对应,推测key长度为8</p>
+<p>检验后可得有意义的字符串,将其转换得flag</p>
+<h3 id="ezzzzz-RSA"><a href="#ezzzzz-RSA" class="headerlink" title="ezzzzz_RSA"></a>ezzzzz_RSA</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">flag = <span class="string">b&#x27;BuildCTF&#123;*******&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">m = libnum.s2n(flag)</span><br><span class="line"></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">q = getPrime(<span class="number">1024</span>)</span><br><span class="line">q1 = getPrime(<span class="number">1024</span>)</span><br><span class="line">p = getPrime(<span class="number">1024</span>)</span><br><span class="line">p1 = getPrime(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">n = p * q</span><br><span class="line">n1 = q * p1</span><br><span class="line">n2 = p * q1</span><br><span class="line">c = <span class="built_in">pow</span>(m, e, n)</span><br><span class="line">h0 = <span class="built_in">pow</span>(<span class="number">2023</span> * p + <span class="number">2024</span>, q1, n2)</span><br><span class="line">h1 = <span class="built_in">pow</span>(<span class="number">2024</span> * p1 + <span class="number">2023</span> * q, <span class="number">113</span>, n1)</span><br><span class="line">h2 = <span class="built_in">pow</span>(<span class="number">2023</span> * p1 + <span class="number">2024</span> * q, <span class="number">629</span>, n1)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;n1 = <span class="subst">&#123;n1&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;n2 = <span class="subst">&#123;n2&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;c = <span class="subst">&#123;c&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;h0 = <span class="subst">&#123;h0&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;h1 = <span class="subst">&#123;h1&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;h2 = <span class="subst">&#123;h2&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">n1 = 19957426023169626195602761840035904096149402534966487535713447987366768645542881124782551268978342063458430846877824210659778126281705984711061190351636497944943321988950188171159903717348936556346198638311950016136865425015037098270040031872702873264144372191898253134939805153141701819590164140250130420280491966786900651186941317959556066730959744279963976065565436153399679475410040773637142677936926894677919242351610457296203864806991539480593546084449323017670431590012312526757477514457145686070196978477495658962519391041011847512041022828710693830661412217389320600888361578917153088073678587422269955710471</span></span><br><span class="line"><span class="string">n2 = 11933661747067216317642315621042074566046499785197709817779978157416906347669444374234313329064859622960743743511735672614999566264025648698589886185056758071718319964262619819143757922916624196354313322456534266520150543008117888101349920396737532937616502689667208207329048979872222563877933742673021891249520999021187404065706388700711208445628041386956459398271230236018476964839399245143666534359113777846535151773174701732284280083586580489995666306373839417946648196140879978268472361473557375951972193618245984950374326806423407152520541682571610372434453778172497925696535270204943842467472100237854318244291</span></span><br><span class="line"><span class="string">c = 20080676122944896238797522372441559951736929534371084097400233944319893926800196694449564534150770085554349952433141815637324753386484549616573636001763815852095984830828952020047938406909274311785306299061021662484544371813739713520361343350959698642021322243662988875917088108399877176033404097457939417134483333264562602633853694382014472747500159100723626314928476484037666519857604568300967071868151508142784271042600815406853978696857309760951105852288354603503207383899902135741426285551161292195639862478256231538619968275273876467583013024899054710124331145912185471501398910765579441956531091561893256832468</span></span><br><span class="line"><span class="string">h0 = 2996726009726260695732821166504040344731102637047682432884058857493935625094258046641569918904978173116793673563730117949606727933902262668880339210084101176866383602543966179840353633735507442926707342258391362245904850297416642271123328980812931025677857373199540129280097315832907023777052101133649877194495480543646472133854655383755313968952550827443970931104462445312146328606862802196901953935238972759852435882720786570965542286278549107402918041194008845717507735786897968734831064393337773557817839343449001368565856921138408039931608804233595980497557733714560035682416265029819340316734845279080134432704</span></span><br><span class="line"><span class="string">h1 = 19843160604742228074331688651361052208481287636527838615063387670722213224954610448720065937378201545177278841575633697012434074186046556843292068835752113384756149944114298949115412819730843598288637259467085268861201775723817790428386595559040938133481222229290199923979132846871398172318539492741755408720073350962388138453341677009547616238262211176727424067946020683742262782319735286357465817786446238528187722959357444676512705451504136333336415880020502524009647940182721264953084120705872870651891290569527156804993340563927419561415555818468261824287933683736509372616293569615247228388443284457740072850735</span></span><br><span class="line"><span class="string">h2 = 15147052684674827267989051566164167603473413362261253296001082161136918959833294463185335416662127368473980239667918561600741667513285708843081475074688239507330230558331408877583246661862040918410036936505307437329914363201630212163952357444441705663871720438955166472073576526814546767805314463827075388036712200327696168965762177567346966479399896578190111819130000991594490932388132188241726654756368698998232826340969288082645860324404980143489489946490266439447342461483490582149239131554246756547000945718737195930407251232848166108751122870333559461452459416252942341423373918245090162970624108991537972775066</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>h1 &#x3D; pow(2024 * p1 + 2023 * q, 113, n1),h2 &#x3D; pow(2023 * p1 + 2024 * q, 629, n1)</p>
+<p>二项式得h1&#x3D;(2024p1)^113+(2023q)^113(mod n1),h2&#x3D;(2023p1)^629+(2024q)^629(mod n1)</p>
+<p>kq&#x3D;(pow(h1,629,n1)<em>pow(2023,113</em>629,n1)-pow(h2,113,n1)<em>pow(2024,113</em>629,n1))%n1</p>
+<p>kq&#x3D;(2023^2<em>q)^(113 * 629)-(2024^2</em>q)^(113 * 629) (mod n1)</p>
+<p>n1&#x3D;q*p1,则kq为q的倍数,计算n1与kq的最大公因数即可得q</p>
+<p>由于m较小,可在mod q下计算</p>
+<p>得flag&#x3D;BuildCTF{29g5blh5-7829-5k38-a836-9bk54h291h6}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">n1 = <span class="number">19957426023169626195602761840035904096149402534966487535713447987366768645542881124782551268978342063458430846877824210659778126281705984711061190351636497944943321988950188171159903717348936556346198638311950016136865425015037098270040031872702873264144372191898253134939805153141701819590164140250130420280491966786900651186941317959556066730959744279963976065565436153399679475410040773637142677936926894677919242351610457296203864806991539480593546084449323017670431590012312526757477514457145686070196978477495658962519391041011847512041022828710693830661412217389320600888361578917153088073678587422269955710471</span></span><br><span class="line">n2 = <span class="number">11933661747067216317642315621042074566046499785197709817779978157416906347669444374234313329064859622960743743511735672614999566264025648698589886185056758071718319964262619819143757922916624196354313322456534266520150543008117888101349920396737532937616502689667208207329048979872222563877933742673021891249520999021187404065706388700711208445628041386956459398271230236018476964839399245143666534359113777846535151773174701732284280083586580489995666306373839417946648196140879978268472361473557375951972193618245984950374326806423407152520541682571610372434453778172497925696535270204943842467472100237854318244291</span></span><br><span class="line">c = <span class="number">20080676122944896238797522372441559951736929534371084097400233944319893926800196694449564534150770085554349952433141815637324753386484549616573636001763815852095984830828952020047938406909274311785306299061021662484544371813739713520361343350959698642021322243662988875917088108399877176033404097457939417134483333264562602633853694382014472747500159100723626314928476484037666519857604568300967071868151508142784271042600815406853978696857309760951105852288354603503207383899902135741426285551161292195639862478256231538619968275273876467583013024899054710124331145912185471501398910765579441956531091561893256832468</span></span><br><span class="line">h0 = <span class="number">2996726009726260695732821166504040344731102637047682432884058857493935625094258046641569918904978173116793673563730117949606727933902262668880339210084101176866383602543966179840353633735507442926707342258391362245904850297416642271123328980812931025677857373199540129280097315832907023777052101133649877194495480543646472133854655383755313968952550827443970931104462445312146328606862802196901953935238972759852435882720786570965542286278549107402918041194008845717507735786897968734831064393337773557817839343449001368565856921138408039931608804233595980497557733714560035682416265029819340316734845279080134432704</span></span><br><span class="line">h1 = <span class="number">19843160604742228074331688651361052208481287636527838615063387670722213224954610448720065937378201545177278841575633697012434074186046556843292068835752113384756149944114298949115412819730843598288637259467085268861201775723817790428386595559040938133481222229290199923979132846871398172318539492741755408720073350962388138453341677009547616238262211176727424067946020683742262782319735286357465817786446238528187722959357444676512705451504136333336415880020502524009647940182721264953084120705872870651891290569527156804993340563927419561415555818468261824287933683736509372616293569615247228388443284457740072850735</span></span><br><span class="line">h2 = <span class="number">15147052684674827267989051566164167603473413362261253296001082161136918959833294463185335416662127368473980239667918561600741667513285708843081475074688239507330230558331408877583246661862040918410036936505307437329914363201630212163952357444441705663871720438955166472073576526814546767805314463827075388036712200327696168965762177567346966479399896578190111819130000991594490932388132188241726654756368698998232826340969288082645860324404980143489489946490266439447342461483490582149239131554246756547000945718737195930407251232848166108751122870333559461452459416252942341423373918245090162970624108991537972775066</span></span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line"></span><br><span class="line">kq=(<span class="built_in">pow</span>(h1,<span class="number">629</span>,n1)*<span class="built_in">pow</span>(<span class="number">2023</span>,<span class="number">113</span>*<span class="number">629</span>,n1)-<span class="built_in">pow</span>(h2,<span class="number">113</span>,n1)*<span class="built_in">pow</span>(<span class="number">2024</span>,<span class="number">113</span>*<span class="number">629</span>,n1))%n1</span><br><span class="line">q=GCD(kq,n1)</span><br><span class="line">d = inverse(e,(q-<span class="number">1</span>))</span><br><span class="line">m = <span class="built_in">pow</span>(c,d,q)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#OVO%E5%BC%80%E9%97%A8%E7%88%BD%EF%BC%81%E5%BC%80%E5%88%B0%E5%8D%97%E5%A4%A9%E9%97%A8%E4%BA%86%E5%85%84%E5%BC%9F"><span class="toc-text">OVO开门爽！开到南天门了兄弟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E8%BF%99%E8%BE%88%E5%AD%90%E5%B0%B1%E6%98%AF%E8%A2%AB%E5%8F%A4%E5%85%B8%E7%BB%99%E5%AE%B3%E4%BA%86"><span class="toc-text">我这辈子就是被古典给害了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezzzzz-RSA"><span class="toc-text">ezzzzz_RSA</span></a></li></ol>
+  </div>
+</div>
+
+  
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2024/10/08/0xGame/" class="next">Next post 0xGame &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+  
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by 林泠翎 using
+      <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      -Thanks for the help
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="/astesia.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-3.6.4.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+    
+      backgroundImages.push('/back1.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back2.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back3.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back4.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back5.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back6.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back7.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back8.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back9.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back10.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back11.png?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('/back12.png?imageView2/1/w/__width__/h/__height__');
+    
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["zoomIn"],"timer":false,"delay":400000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
