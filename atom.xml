@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-11-11T10:39:11.336Z</updated>
+  <updated>2024-11-18T11:42:12.334Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sage相关</title>
+    <link href="http://example.com/2024/11/18/sage%E7%9B%B8%E5%85%B3/"/>
+    <id>http://example.com/2024/11/18/sage%E7%9B%B8%E5%85%B3/</id>
+    <published>2024-11-18T11:15:14.000Z</published>
+    <updated>2024-11-18T11:42:12.334Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>尽管网上sage相关的教程什么的还不算少,但”在vs code上写并运行”的就没有了,好不容易找到一个(<a href="https://hasegawaazusa.github.io/sagemath-get-started.html">sagemath 入门笔记 | 独奏の小屋</a>)后,又发现,如果用python为内核,环的使用会有问题(即使已经导入了sage),如果用sage为内核,会有不知原因的报错</p><p>![](C:\Users\54208\Pictures\Screenshots\屏幕截图 2024-11-18 192555.png)</p><p>![屏幕截图 2024-11-18 192632](C:\Users\54208\Pictures\Screenshots\屏幕截图 2024-11-18 192632.png)</p><p>后一个不知道怎么解决……但前一个是因为python不支持sage的一些语法导致的,不过sage生成环的方法不只一种,查文档得知可用不那么方便的生成方法解决</p><p>![](C:\Users\54208\Pictures\Screenshots\屏幕截图 2024-11-18 193234.png)</p><p>R , x &#x3D; Zmod(n)[‘x’].objgen()等价于R.<x> &#x3D; PolynomialRing(Zmod(n), implementation&#x3D;’NTL’)(大概吧,我对sage实在是一无所知,不过在替换了一些网上的脚本后它能运行,所以我可以认为它没问题?)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="learn" scheme="http://example.com/tags/learn/"/>
+    
+  </entry>
   
   <entry>
     <title>pcb</title>
