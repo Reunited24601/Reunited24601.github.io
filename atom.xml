@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-11-25T12:31:15.553Z</updated>
+  <updated>2024-12-01T11:26:23.844Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WuCup</title>
+    <link href="http://example.com/2024/12/01/WuCup/"/>
+    <id>http://example.com/2024/12/01/WuCup/</id>
+    <published>2024-12-01T02:07:09.000Z</published>
+    <updated>2024-12-01T11:26:23.844Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h2><p>密钥已知,最后边通过异或加密,只需把密文再加密一次即可</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line">import base64</span><br><span class="line">import math</span><br><span class="line">from sympy import *</span><br><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">key=&#x27;hello world&#x27;</span><br><span class="line">encry=&#x27;d8d2963e0d8ab8533d2a7fe296c5292339246eba0d292d5752578359322c3a77892dfa7261b84f&#x27;</span><br><span class="line">m_list=[]</span><br><span class="line">for i in range(0,len(encry)//2):</span><br><span class="line">    m_list.append(int(encry[2*i:2*i+2],16))</span><br><span class="line"></span><br><span class="line">s=[]</span><br><span class="line">t=&#x27;&#x27;</span><br><span class="line">for i in range(0,256):</span><br><span class="line">    s.append(i)</span><br><span class="line"></span><br><span class="line">for i in range(0,256):</span><br><span class="line">    t+=key[i%len(key)]</span><br><span class="line"></span><br><span class="line">j=0</span><br><span class="line">for i in range(0,256):</span><br><span class="line">    j=(j+s[i]+ord(t[i]))%256</span><br><span class="line">    s[i],s[j]=s[j],s[i]</span><br><span class="line"></span><br><span class="line">i=0</span><br><span class="line">j=0</span><br><span class="line">for m in range(0,39):</span><br><span class="line">    i=(i + 1)%256</span><br><span class="line">    j=(j + s[i])%256</span><br><span class="line">    s[i],s[j]=s[j],s[i]</span><br><span class="line">    x=(s[i] + (s[j]%256))%256</span><br><span class="line">    m_list[m]=m_list[m]^s[x]</span><br><span class="line"></span><br><span class="line">flag=&#x27;&#x27;</span><br><span class="line">for i in m_list:</span><br><span class="line">    i=chr(i)</span><br><span class="line">    flag+=i</span><br><span class="line"></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure><p>flag&#x3D;WuCup{55a0a84f86a6ad40006f014619577ad3}</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="ctf wp" scheme="http://example.com/tags/ctf-wp/"/>
+    
+  </entry>
   
   <entry>
     <title>p,q异或剪枝</title>
